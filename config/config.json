@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "neondb_owner",
+    "password": "npg_oD6wugFTv4mU",
+    "database": "neondb",
+    "host": "ep-rough-snow-a4j5srhk-pooler.us-east-1.aws.neon.tech",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "neondb_owner",
+    "password": "npg_oD6wugFTv4mU",
+    "database": "neondb",
+    "host": "ep-rough-snow-a4j5srhk-pooler.us-east-1.aws.neon.tech",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "neondb_owner",
+    "password": "npg_oD6wugFTv4mU",
+    "database": "neondb",
+    "host": "ep-rough-snow-a4j5srhk-pooler.us-east-1.aws.neon.tech",
+    "dialect": "postgres"
+  }
+}
+
+
