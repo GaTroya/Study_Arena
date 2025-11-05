@@ -1,0 +1,22 @@
+{
+  "dbOptions": {
+    "database": "neondb",
+    "username": "neondb_owner", 
+    "password": "npg_oD6wugFTv4mU",
+    "dialect": "postgres",
+    "host": "ep-rough-snow-a4j5srhk-pooler.us-east-1.aws.neon.tech",
+    "port": 5432,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  },
+  "options": {
+    "type": "js",
+    "camelCase": false,
+    "dir": "./models",
+    "emptyDir": false
+  }
+}
