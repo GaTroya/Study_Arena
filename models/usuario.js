@@ -1,7 +1,5 @@
-const {
-  DataTypes
-} = require('sequelize');
-module.exports = sequelize => {
+const { DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   const attributes = {
     id_usuario: {
       type: DataTypes.INTEGER,
@@ -10,7 +8,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: true,
       field: "id_usuario",
-      autoIncrement: true
+      autoIncrement: true,
     },
     nombre_usuario: {
       type: DataTypes.CHAR(100),
@@ -20,7 +18,7 @@ module.exports = sequelize => {
       primaryKey: false,
       field: "nombre_usuario",
       autoIncrement: false,
-      unique: "usuario_nombre_usuario_key"
+      unique: "usuario_nombre_usuario_key",
     },
     correo: {
       type: DataTypes.CHAR(255),
@@ -30,7 +28,7 @@ module.exports = sequelize => {
       primaryKey: false,
       field: "correo",
       autoIncrement: false,
-      unique: "usuario_correo_key"
+      unique: "usuario_correo_key",
     },
     contrasena: {
       type: DataTypes.CHAR(255),
@@ -39,13 +37,26 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "contrasena",
-      autoIncrement: false
-    }
+      autoIncrement: false,
+    },
+    rol: {
+      type: DataTypes.CHAR(255),
+      allowNull: false,
+      defaultValue: "Estudiante",
+      comment: null,
+      primaryKey: false,
+      field: "rol",
+      autoIncrement: false,
+    },
   };
   const options = {
     tableName: "usuario",
     comment: "",
-    indexes: []
+    indexes: [],
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
+    schema: "public",
   };
   const UsuarioModel = sequelize.define("usuario_model", attributes, options);
   return UsuarioModel;

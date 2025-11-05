@@ -1,7 +1,5 @@
-const {
-  DataTypes
-} = require('sequelize');
-module.exports = sequelize => {
+const { DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   const attributes = {
     id_trivia: {
       type: DataTypes.INTEGER,
@@ -10,7 +8,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: true,
       field: "id_trivia",
-      autoIncrement: true
+      autoIncrement: true,
     },
     titulo: {
       type: DataTypes.CHAR(150),
@@ -19,7 +17,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "titulo",
-      autoIncrement: false
+      autoIncrement: false,
     },
     descripcion: {
       type: DataTypes.TEXT,
@@ -28,7 +26,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "descripcion",
-      autoIncrement: false
+      autoIncrement: false,
     },
     dificultad: {
       type: DataTypes.CHAR(50),
@@ -37,7 +35,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "dificultad",
-      autoIncrement: false
+      autoIncrement: false,
     },
     categoria: {
       type: DataTypes.CHAR(50),
@@ -46,7 +44,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "categoria",
-      autoIncrement: false
+      autoIncrement: false,
     },
     id_nivel: {
       type: DataTypes.INTEGER,
@@ -58,14 +56,18 @@ module.exports = sequelize => {
       autoIncrement: false,
       references: {
         key: "id_nivel",
-        model: "nivel_model"
-      }
-    }
+        model: "nivel_model",
+      },
+    },
   };
   const options = {
     tableName: "trivia",
     comment: "",
-    indexes: []
+    indexes: [],
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
+    schema: "public",
   };
   const TriviaModel = sequelize.define("trivia_model", attributes, options);
   return TriviaModel;

@@ -1,7 +1,5 @@
-const {
-  DataTypes
-} = require('sequelize');
-module.exports = sequelize => {
+const { DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   const attributes = {
     id_inventario: {
       type: DataTypes.INTEGER,
@@ -10,7 +8,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: true,
       field: "id_inventario",
-      autoIncrement: true
+      autoIncrement: true,
     },
     nombre_objeto: {
       type: DataTypes.CHAR(100),
@@ -19,7 +17,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "nombre_objeto",
-      autoIncrement: false
+      autoIncrement: false,
     },
     cantidad: {
       type: DataTypes.INTEGER,
@@ -28,7 +26,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "cantidad",
-      autoIncrement: false
+      autoIncrement: false,
     },
     precio: {
       type: DataTypes.DOUBLE,
@@ -37,7 +35,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "precio",
-      autoIncrement: false
+      autoIncrement: false,
     },
     id_pregunta: {
       type: DataTypes.INTEGER,
@@ -49,15 +47,23 @@ module.exports = sequelize => {
       autoIncrement: false,
       references: {
         key: "id_pregunta",
-        model: "pregunta_model"
-      }
-    }
+        model: "pregunta_model",
+      },
+    },
   };
   const options = {
     tableName: "inventario",
     comment: "",
-    indexes: []
+    indexes: [],
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
+    schema: "public",
   };
-  const InventarioModel = sequelize.define("inventario_model", attributes, options);
+  const InventarioModel = sequelize.define(
+    "inventario_model",
+    attributes,
+    options
+  );
   return InventarioModel;
 };

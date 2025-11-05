@@ -6,6 +6,16 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var apuntesRouter = require('./routes/apuntes');
+var inventarioRouter = require('./routes/inventario');
+var nivelRouter = require('./routes/nivel');
+var opcionRouter = require('./routes/opcion');
+var preguntaRouter = require('./routes/pregunta');
+var sesiontriviaRouter = require('./routes/sesiontrivia');
+var transaccionRouter = require('./routes/transaccion');
+var trivia_preguntaRouter = require('./routes/trivia_pregunta');
+var triviaRouter = require('./routes/trivia');
+var usuarioRouter = require('./routes/usuario');
 
 var app = express();
 
@@ -21,6 +31,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/apuntes', apuntesRouter);
+app.use('/inventario', inventarioRouter);
+app.use('/nivel', nivelRouter);
+app.use('/opcion', opcionRouter);
+app.use('/pregunta', preguntaRouter);
+app.use('/sesiontrivia', sesiontriviaRouter);
+app.use('/transaccion', transaccionRouter);
+app.use('/trivia_pregunta', trivia_preguntaRouter);
+app.use('/trivia', triviaRouter);
+app.use('/usuario', usuarioRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,7 +1,5 @@
-const {
-  DataTypes
-} = require('sequelize');
-module.exports = sequelize => {
+const { DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   const attributes = {
     id_nivel: {
       type: DataTypes.INTEGER,
@@ -10,7 +8,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: true,
       field: "id_nivel",
-      autoIncrement: true
+      autoIncrement: true,
     },
     nombre_nivel: {
       type: DataTypes.CHAR(100),
@@ -20,7 +18,7 @@ module.exports = sequelize => {
       primaryKey: false,
       field: "nombre_nivel",
       autoIncrement: false,
-      unique: "nivel_nombre_nivel_key"
+      unique: "nivel_nombre_nivel_key",
     },
     puntos_minimos: {
       type: DataTypes.INTEGER,
@@ -29,13 +27,17 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "puntos_minimos",
-      autoIncrement: false
-    }
+      autoIncrement: false,
+    },
   };
   const options = {
     tableName: "nivel",
     comment: "",
-    indexes: []
+    indexes: [],
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
+    schema: "public",
   };
   const NivelModel = sequelize.define("nivel_model", attributes, options);
   return NivelModel;

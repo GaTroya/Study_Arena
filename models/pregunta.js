@@ -1,7 +1,5 @@
-const {
-  DataTypes
-} = require('sequelize');
-module.exports = sequelize => {
+const { DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   const attributes = {
     id_pregunta: {
       type: DataTypes.INTEGER,
@@ -10,7 +8,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: true,
       field: "id_pregunta",
-      autoIncrement: true
+      autoIncrement: true,
     },
     texto_pregunta: {
       type: DataTypes.TEXT,
@@ -19,7 +17,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "texto_pregunta",
-      autoIncrement: false
+      autoIncrement: false,
     },
     id_usuario: {
       type: DataTypes.INTEGER,
@@ -31,14 +29,18 @@ module.exports = sequelize => {
       autoIncrement: false,
       references: {
         key: "id_usuario",
-        model: "usuario_model"
-      }
-    }
+        model: "usuario_model",
+      },
+    },
   };
   const options = {
     tableName: "pregunta",
     comment: "",
-    indexes: []
+    indexes: [],
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
+    schema: "public",
   };
   const PreguntaModel = sequelize.define("pregunta_model", attributes, options);
   return PreguntaModel;

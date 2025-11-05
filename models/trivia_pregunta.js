@@ -1,7 +1,5 @@
-const {
-  DataTypes
-} = require('sequelize');
-module.exports = sequelize => {
+const { DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   const attributes = {
     id_trivia: {
       type: DataTypes.INTEGER,
@@ -13,8 +11,8 @@ module.exports = sequelize => {
       autoIncrement: false,
       references: {
         key: "id_trivia",
-        model: "trivia_model"
-      }
+        model: "trivia_model",
+      },
     },
     id_pregunta: {
       type: DataTypes.INTEGER,
@@ -26,15 +24,23 @@ module.exports = sequelize => {
       autoIncrement: false,
       references: {
         key: "id_pregunta",
-        model: "pregunta_model"
-      }
-    }
+        model: "pregunta_model",
+      },
+    },
   };
   const options = {
     tableName: "trivia_pregunta",
     comment: "",
-    indexes: []
+    indexes: [],
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
+    schema: "public",
   };
-  const TriviaPreguntaModel = sequelize.define("trivia_pregunta_model", attributes, options);
+  const TriviaPreguntaModel = sequelize.define(
+    "trivia_pregunta_model",
+    attributes,
+    options
+  );
   return TriviaPreguntaModel;
 };

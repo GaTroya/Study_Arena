@@ -1,7 +1,5 @@
-const {
-  DataTypes
-} = require('sequelize');
-module.exports = sequelize => {
+const { DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   const attributes = {
     id_transaccion: {
       type: DataTypes.INTEGER,
@@ -10,7 +8,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: true,
       field: "id_transaccion",
-      autoIncrement: true
+      autoIncrement: true,
     },
     tipo: {
       type: DataTypes.CHAR(50),
@@ -19,7 +17,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "tipo",
-      autoIncrement: false
+      autoIncrement: false,
     },
     fecha_transaccion: {
       type: DataTypes.DATEONLY,
@@ -28,7 +26,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "fecha_transaccion",
-      autoIncrement: false
+      autoIncrement: false,
     },
     cantidad: {
       type: DataTypes.DOUBLE,
@@ -37,7 +35,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "cantidad",
-      autoIncrement: false
+      autoIncrement: false,
     },
     id_usuario: {
       type: DataTypes.INTEGER,
@@ -49,15 +47,23 @@ module.exports = sequelize => {
       autoIncrement: false,
       references: {
         key: "id_usuario",
-        model: "usuario_model"
-      }
-    }
+        model: "usuario_model",
+      },
+    },
   };
   const options = {
     tableName: "transaccion",
     comment: "",
-    indexes: []
+    indexes: [],
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
+    schema: "public",
   };
-  const TransaccionModel = sequelize.define("transaccion_model", attributes, options);
+  const TransaccionModel = sequelize.define(
+    "transaccion_model",
+    attributes,
+    options
+  );
   return TransaccionModel;
 };

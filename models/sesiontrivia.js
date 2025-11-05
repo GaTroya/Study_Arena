@@ -1,7 +1,5 @@
-const {
-  DataTypes
-} = require('sequelize');
-module.exports = sequelize => {
+const { DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   const attributes = {
     id_sesion: {
       type: DataTypes.INTEGER,
@@ -10,16 +8,16 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: true,
       field: "id_sesion",
-      autoIncrement: true
+      autoIncrement: true,
     },
     fecha_sesion: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
       comment: null,
       primaryKey: false,
       field: "fecha_sesion",
-      autoIncrement: false
+      autoIncrement: false,
     },
     puntaje_obtenido: {
       type: DataTypes.INTEGER,
@@ -28,7 +26,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "puntaje_obtenido",
-      autoIncrement: false
+      autoIncrement: false,
     },
     tiempo_usado: {
       type: DataTypes.INTEGER,
@@ -37,7 +35,7 @@ module.exports = sequelize => {
       comment: null,
       primaryKey: false,
       field: "tiempo_usado",
-      autoIncrement: false
+      autoIncrement: false,
     },
     id_usuario: {
       type: DataTypes.INTEGER,
@@ -49,8 +47,8 @@ module.exports = sequelize => {
       autoIncrement: false,
       references: {
         key: "id_usuario",
-        model: "usuario_model"
-      }
+        model: "usuario_model",
+      },
     },
     id_trivia: {
       type: DataTypes.INTEGER,
@@ -62,15 +60,23 @@ module.exports = sequelize => {
       autoIncrement: false,
       references: {
         key: "id_trivia",
-        model: "trivia_model"
-      }
-    }
+        model: "trivia_model",
+      },
+    },
   };
   const options = {
     tableName: "sesiontrivia",
     comment: "",
-    indexes: []
+    indexes: [],
+    timestamps: false,
+    underscored: true,
+    freezeTableName: true,
+    schema: "public",
   };
-  const SesiontriviaModel = sequelize.define("sesiontrivia_model", attributes, options);
+  const SesiontriviaModel = sequelize.define(
+    "sesiontrivia_model",
+    attributes,
+    options
+  );
   return SesiontriviaModel;
 };
